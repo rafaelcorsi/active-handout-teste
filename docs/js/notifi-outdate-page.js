@@ -29,9 +29,11 @@
             notification.toast(text, {bgColor: "warning",
                                       href: window.location.href });
             nCurrentId = nRemoteId;
+
+            window.setTimeout(checkChange, 1000);
         }
       }
 
-    window.setInterval(checkChange, 100);
+    window.setInterval(checkChange, 1000);
 
   }
