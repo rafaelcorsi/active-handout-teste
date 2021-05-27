@@ -1,7 +1,7 @@
 {
     // https://developer.mozilla.org/en-US/docs/Web/API/Document/lastModified#notes
     var
-    nCurrentId = Date.parse(document.lastModified);
+    nCurrentId = 0;
     nRemoteId = 0;
 
     function getlastmod(url, cb) {
@@ -20,9 +20,13 @@
             nRemoteId = Date.parse(v);
         });
 
+        if (nCurrentId == 0){
+            nCurrentId = nRemoteId;
+        }
+
         if (isNaN(nRemoteId) || nRemoteId > nCurrentId) {
             const text = window.ihandout_config["notifi-outdate-page"]["text"];
-            notification.toast(text, {color: "important",
+            notification.toast(text, {color: "warning",
                                       href: window.location.href });
             nCurrentId = nRemoteId;
         }
