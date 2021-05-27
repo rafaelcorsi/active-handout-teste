@@ -26,7 +26,7 @@
 
         if (isNaN(nRemoteId) || nRemoteId > nCurrentId) {
             const text = window.ihandout_config["notifi-outdate-page"]["text"];
-            notification.toast(text, {color: "warning",
+            notification.toast(text, {bgColor: "warning",
                                       href: window.location.href });
             nCurrentId = nRemoteId;
         }
