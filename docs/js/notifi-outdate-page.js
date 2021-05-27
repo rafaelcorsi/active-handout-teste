@@ -8,6 +8,7 @@
         var req = new XMLHttpRequest();
         // by-pass cache
         req.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime());
+        req.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
         req.send(null);
         req.addEventListener("load", function() {
             cb(req.getResponseHeader("Last-Modified"));
@@ -23,6 +24,7 @@
             const text = window.ihandout_config["notifi-outdate-page"]["text"];
             notification.toast(text, {color: "important",
                                       href: window.location.href });
+            nCurrentId = nRemoteId;
         }
       }
 
